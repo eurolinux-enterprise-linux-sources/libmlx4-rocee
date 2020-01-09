@@ -1,8 +1,6 @@
-%global __obsolete_version 1.0.6
-
 Name: libmlx4-rocee
 Version: 1.0.5
-Release: 1.1%{?dist}
+Release: 1%{?dist}
 Summary: Mellanox ConnectX InfiniBand HCA Userspace Driver
 Provides: libibverbs-driver.%{_arch}
 Group: System Environment/Libraries
@@ -18,8 +16,8 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Provides: libmlx4 = %{version}
 Provides: libmlx4-devel = %{version}
 Provides: libmlx4-rocee-devel = %{version}-%{release}
-Obsoletes: libmlx4 < %{__obsolete_version}
-Obsoletes: libmlx4-devel < %{__obsolete_version}
+Obsoletes: libmlx4 < 1.0.6
+Obsoletes: libmlx4-devel < 1.0.6
 BuildRequires: libibverbs-devel > 1.1.5
 BuildRequires: valgrind-devel
 ExcludeArch: s390 s390x
@@ -34,9 +32,9 @@ ConnectX HCAs for use with the libibverbs library.
 Summary: Static version of the libmlx4 driver
 Group: System Environment/Libraries
 Provides: libmlx4-static = %{version}
-Obsoletes: libmlx4-static < %{__obsolete_version}
+Obsoletes: libmlx4-static < 1.0.6
 Provides: libmlx4-devel-static = %{version}-%{release}
-Obsoletes: libmlx4-devel-static < %{__obsolete_version}
+Obsoletes: libmlx4-devel-static < 1.0.6
 Requires: %{name} = %{version}-%{release}
 
 %description static
@@ -76,10 +74,6 @@ rm -f %{buildroot}%{_libdir}/libmlx4.{la,so}
 %{_libdir}/libmlx4.a
 
 %changelog
-* Mon Dec 02 2013 Doug Ledford <dledford@redhat.com> - 1.0.5-1.1
-- Fix missing line in modprobe.d/libmlx4.conf
-- Resolves: bz1037757
-
 * Mon Oct 28 2013 Doug Ledford <dledford@redhat.com> - 1.0.5-1
 - Update to match rhel-6.5 libmlx4 package
 - Related: bz879191
